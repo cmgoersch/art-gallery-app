@@ -12,7 +12,7 @@ export default function HomePage() {
   // console.log(data);
 
   function onClickPicture() {
-    console.log("Nö");
+    return console.log("Nö");
 
     // return (
 
