@@ -1,11 +1,8 @@
-import { useId } from "react";
 import useSWR from "swr";
+import ArtPieces from "@/components/ArtPieces";
 
-const fetcher = (...args) => fetch(...args).then((res) => res.json());
 export default function HomePage() {
-  // const [id, setId] = useState(1);
-
-  const { data } = useSWR(`https://example-apis.vercel.app/api/art`, fetcher);
+  const { data } = useSWR(`https://example-apis.vercel.app/api/art`);
 
   if (!data) {
     return <h1>Loading...</h1>;
@@ -13,25 +10,18 @@ export default function HomePage() {
   console.log(data);
   return (
     <>
-      <div>
-        <h1>hello World</h1>
-        <ul>
-          {data.map((picture) => {
-            return <li key={useId}>{picture.artist}</li>;
-          })}
-        </ul>
-      </div>
+      <ul>
+        {data.map((picture) => {
+          return (
+            <li key={picture.slug}>
+              {picture.artist} <ArtPieces pieces={picture} />
+            </li>
+          );
+        })}
+      </ul>
     </>
   );
 }
-
-// export default function HomePage() {
-//   return (
-//     <div>
-//       <h1>Hello from Next.js</h1>
-//     </div>
-//   );
-// }
 
 // So sehen unsere Daten aus :)
 
