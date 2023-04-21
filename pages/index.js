@@ -1,24 +1,22 @@
 import useSWR from "swr";
 import ArtPieces from "@/components/ArtPieces";
-import ArtPiecesPreview from "@/components/ArtPiecesPreview";
-import Link from "next/link";
+// import ArtPiecesPreview from "@/components/ArtPiecesPreview";
+// import Link from "next/link";
 
 export default function HomePage() {
   const { data } = useSWR(`https://example-apis.vercel.app/api/art`);
-  console.log(data);
+  // console.log(data);
   if (!data) {
     return <h1>Loading...</h1>;
   }
 
-  data.map((picture) => {
-    const newPicture = { picture };
-    picture["isFavorite"] = false;
-  });
-
-  console.log(data);
+  // data.map((picture) => {
+  //   const newPicture = { picture };
+  //   picture["isFavorite"] = false;
+  // });
 
   function onClickPicture(event) {
-    return console.log("event:", event);
+    return;
   }
 
   return (
