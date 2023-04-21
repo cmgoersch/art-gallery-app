@@ -2,33 +2,35 @@ import useSWR from "swr";
 import ArtPieces from "@/components/ArtPieces";
 import ArtPiecesPreview from "@/components/ArtPiecesPreview";
 import Link from "next/link";
+import useImmer from "immer";
 
 export default function HomePage() {
   const { data } = useSWR(`https://example-apis.vercel.app/api/art`);
-
+  console.log(data);
   if (!data) {
     return <h1>Loading...</h1>;
   }
-  // console.log(data);
 
-  function onClickPicture() {
-    return console.log("Nö");
+  data.map((picture) => {
+    const newPicture = { picture };
+    picture["isFavorite"] = false;
+  });
 
-    // return (
+  console.log(data);
 
-    //<Link href={`${slug}`}></Link>;
-    // )
+  function onClickPicture(event) {
+    return console.log("event:", event);
   }
 
   return (
     <>
-      <ArtPiecesPreview pieces={data[0]} />
-
       <ul>
         {data.map((picture) => {
           return (
             <li key={picture.slug} onClick={onClickPicture}>
-              {picture.artist} <ArtPieces pieces={picture} />
+              <Link href={`${picture.slug}`}>
+                {picture.artist} <ArtPieces pieces={picture} />
+              </Link>
             </li>
           );
         })}
