@@ -11,7 +11,13 @@ export default createGlobalStyle`
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 0;
+    margin: 2% 5% 0% 5%; 
     font-family: system-ui;
+    text-decoration: none;
+
   }
+  a {
+    text-decoration: none;
+  }
+
 `;

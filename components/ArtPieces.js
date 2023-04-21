@@ -1,29 +1,58 @@
 import Image from "next/image";
 import Link from "next/link";
+import styled from "styled-components";
+// import styled from "styled-components";
 
 export default function ArtPieces({ pieces }) {
-  // console.log(pieces);
+  const UlItem = styled.ul`
+    display: flex;
+    align-content: center;
+    flex-direction: rows;
+    justify-content: center;
+    flex-flow: wrap;
+    gap: 20px;
+  `;
+
+  const LiItem = styled.li`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+  `;
+
+  const DivItem = styled.div`
+    text-decoration: none;
+    background-color: gray;
+    padding: 5px 0px 5px 0px;
+    margin: 5px 0px 5px 0px;
+    text-align: center;
+    color: white;
+  `;
+
   return (
     <>
-      <ul>
+      <UlItem>
         {pieces.map((picture) => {
           return (
-            <li key={picture.slug}>
+            <LiItem key={picture.slug}>
               <Link href={`${picture.slug}`}>
-                {picture.artist}
-                <div>
+                <>
                   <Image
                     src={picture.imageSource}
-                    width={600}
-                    height={500}
+                    width={picture.dimensions.width / 8}
+                    height={picture.dimensions.height / 8}
                     alt={picture.name}
+                    style={{
+                      objectFit: "contain",
+                    }}
                   />
-                </div>
+                  <DivItem>{picture.artist}</DivItem>
+                </>
               </Link>
-            </li>
+            </LiItem>
           );
         })}
-      </ul>
+      </UlItem>
     </>
   );
 }
