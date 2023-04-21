@@ -26,7 +26,10 @@ export default function ArtPiecesPreview({ pieces }) {
                 background-color: ${color};
                 color: white;
               `;
-              return <ListColor>Farbe:{color}</ListColor>;
+              return;
+              <>
+                <ListColor>Farbe:{color}</ListColor>;
+              </>;
             })}
           </li>
           <li>Year: {pieces.year}</li>

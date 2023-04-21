@@ -2,7 +2,6 @@ import useSWR from "swr";
 import ArtPieces from "@/components/ArtPieces";
 import ArtPiecesPreview from "@/components/ArtPiecesPreview";
 import Link from "next/link";
-import useImmer from "immer";
 
 export default function HomePage() {
   const { data } = useSWR(`https://example-apis.vercel.app/api/art`);
@@ -24,17 +23,7 @@ export default function HomePage() {
 
   return (
     <>
-      <ul>
-        {data.map((picture) => {
-          return (
-            <li key={picture.slug} onClick={onClickPicture}>
-              <Link href={`${picture.slug}`}>
-                {picture.artist} <ArtPieces pieces={picture} />
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
+      <ArtPieces pieces={data} />
     </>
   );
 }
