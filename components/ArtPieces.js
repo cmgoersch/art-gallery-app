@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 export default function ArtPieces({ pieces }) {
-  console.log(pieces);
+  // console.log(pieces);
   return (
     <>
       <div>
