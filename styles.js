@@ -8,7 +8,16 @@ export default createGlobalStyle`
   }
 
   body {
-    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2% 5% 0% 5%; 
     font-family: system-ui;
+    text-decoration: none;
+
   }
+  a {
+    text-decoration: none;
+  }
+
 `;
