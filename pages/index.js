@@ -1,16 +1,7 @@
-import useSWR from "swr";
-import ArtPieces from "@/components/ArtPieces";
-import ArtPiecesPreview from "@/components/ArtPiecesPreview";
 import Spotlight from "@/components/Spotlight";
 import Link from "next/link";
 
-export default function HomePage() {
-  const { data } = useSWR(`https://example-apis.vercel.app/api/art`);
-  // console.log(data);
-  if (!data) {
-    return <h1>Loading...</h1>;
-  }
-
+export default function HomePage({ data }) {
   function onClickPicture(event) {
     return;
   }
@@ -20,12 +11,11 @@ export default function HomePage() {
     return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
   }
 
-  const unsereZahl = getRandomInt(0, data.length);
-  console.log("Zahl:", unsereZahl);
+  const randomIndex = getRandomInt(0, data.length);
 
   return (
     <>
-      <Spotlight pieces={data[unsereZahl]} />
+      <Spotlight pieces={data[randomIndex]} />
       <Link href={`/galerie`}> Galerie</Link>
       {/* <ArtPieces pieces={data} /> */}
     </>

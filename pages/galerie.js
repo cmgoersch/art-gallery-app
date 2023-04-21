@@ -1,14 +1,7 @@
 import ArtPieces from "@/components/ArtPieces";
 import Link from "next/link";
-import useSWR from "swr";
 
-export default function Galerie() {
-  const { data } = useSWR(`https://example-apis.vercel.app/api/art`);
-  // console.log(data);
-  if (!data) {
-    return <h1>Loading...</h1>;
-  }
-
+export default function Galerie({ data }) {
   return (
     <>
       <Link href={`/`}>back</Link>
