@@ -27,7 +27,7 @@ export default function ArtPiecesPreview({ pieces }) {
                 color: white;
               `;
 
-              console.log("was kommt hier", color);
+              // console.log("was kommt hier", color);
               return (
                 <>
                   <ListColor>Farbe:{color}</ListColor>
