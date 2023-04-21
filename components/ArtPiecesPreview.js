@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export default function ArtPiecesPreview({ pieces }) {
   const ListItem = styled.li`
-    color: #bccbd5;
+    color: red;
   `;
 
   return (
@@ -20,13 +20,19 @@ export default function ArtPiecesPreview({ pieces }) {
           <ListItem>Picturename:{pieces.name}</ListItem>
           <li>Year: {pieces.year}</li>
           <li>Genre: {pieces.genre}</li>
-          <li>
+          <li key={pieces.slug}>
             {pieces.colors.map((color) => {
               const ListColor = styled.li`
                 background-color: ${color};
                 color: white;
               `;
-              return <ListColor>Farbe:{color}</ListColor>;
+
+              console.log("was kommt hier", color);
+              return (
+                <>
+                  <ListColor>Farbe:{color}</ListColor>
+                </>
+              );
             })}
           </li>
           <li>Year: {pieces.year}</li>
